@@ -1,0 +1,25 @@
+@import url('reset.css');
+
+body {
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    background-color: #000;
+    color: #fff;
+}
+
+.wrapper {
+    min-height: 100%;
+    overflow: clip;
+}
+
+.page {
+    position: absolute;
+    width: 100%;
+    min-height: 100vh;
+    top: 0;
+    left: 0;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
