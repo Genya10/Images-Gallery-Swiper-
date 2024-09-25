@@ -75,3 +75,24 @@ if(images.length) {
      pageSlider.controller.control = pageBgSlider
      pageBgSlider.controller.control = pageTextSlider
 }
+
+const speed = 800
+document.addEventListener("click", function(e){
+    const targetElement = e.target
+    const textBlock = document.querySelector('.text')
+    textBlock.style.transitionDuration = `${speed}ms`
+
+    //Open image
+    if(targetElement.closest('.slide')){
+        const slide = targetElement.closest('.slide')
+        const slideImage = slide.querySelector('img')
+        const activeImage = document.querySelector('.slide__picture.active')
+
+        if(slide.classList.contains('swiper-slide-active')){
+            slideImage.classList.add('active')
+            textBlock.classList.add('active')
+        } else {
+            activeImage ? activeImage.classList.remove('active') : null
+        }
+    }
+})
