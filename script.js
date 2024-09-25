@@ -35,7 +35,7 @@ if(images.length) {
         </div>
         `;
         textSlides += `
-        <div class="text__slide swiper">
+        <div class="text__slide swiper-slide">
           <span>${image.dataset.title ? image.dataset.title : ``}</span>
         </div>
         `;
@@ -57,8 +57,8 @@ if(images.length) {
      </div>
      `;
 
-     page.insertAdjacentElement("afterbegin", background)
-     page.insertAdjacentElement("beforeend", text)
+     page.insertAdjacentHTML("afterbegin", background)
+     page.insertAdjacentHTML("beforeend", text)
 
      let pageBgSlider = new Swiper('.background', {
         speed: 500
