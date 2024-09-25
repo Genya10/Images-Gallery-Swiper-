@@ -56,4 +56,22 @@ if(images.length) {
       </div>
      </div>
      `;
+
+     page.insertAdjacentElement("afterbegin", background)
+     page.insertAdjacentElement("beforeend", text)
+
+     let pageBgSlider = new Swiper('.background', {
+        speed: 500
+     })
+     let pageTextSlider = new Swiper('.text', {
+        effect:"fade",
+        fadeEffect: {
+            crossFade: true
+        },
+        speed: 500
+     })
+
+     // Controll
+     pageSlider.controller.control = pageBgSlider
+     pageBgSlider.controller.control = pageTextSlider
 }
