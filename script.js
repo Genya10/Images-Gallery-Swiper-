@@ -91,8 +91,42 @@ document.addEventListener("click", function(e){
         if(slide.classList.contains('swiper-slide-active')){
             slideImage.classList.add('active')
             textBlock.classList.add('active')
+            imageOpen(slideImage)
         } else {
             activeImage ? activeImage.classList.remove('active') : null
+            pageSlider.slideTo(getIndex(slide))
         }
+        e.preventDefault()
     }
 })
+
+function getIndex(el){
+    return Array.from(el.parentNode.children).indexOf(el)
+}
+function imageOpen(image){
+    const imagePos = getImagePos(image)
+    const openImage = image.cloneNode()
+    const openImageBlock = document.createElement('div')
+    openImageBlock.classList.add('open-image')
+    openImageBlock.append(openImage)
+
+    openImageBlock.style.cssText = `
+      position: fixed;
+      left:${imagePos.left}px;
+      top:${imagePos.top}px;
+      width:${imagePos.width}px;
+      height:${imagePos.height}px;
+      transition: all ${speed}ms;
+    `;
+
+    document.body.append(openImageBlock)
+}
+
+function getImagePos(image){
+    return {
+        left: image.getBoundingClientRect().left,
+        top: image.getBoundingClientRect().top,
+        width: image.offsetWidth,
+        height: image.offsetHeight
+    }
+}
